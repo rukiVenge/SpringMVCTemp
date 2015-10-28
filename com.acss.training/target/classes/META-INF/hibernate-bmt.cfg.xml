@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuration for Bean Managed Transactions (BMT) -->
+        <!--
+            This type of configuration is suited if the transaction is going
+            to be managed within a code.  This means that all commit, rollback, and flush
+            operations on the hibernate will be handled within the application.
+        -->
+    
+        <!-- 
+            Start of BMT configuration 
+        -->
+        <!-- Dialect to be used depending on the Database used -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    
+        <!-- Connection Driver class to use -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    
+        <!-- Connection URL based on the Driver used -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/trainingdb</property>
+    
+        <!-- User name to use -->
+        <property name="hibernate.connection.username">postgres</property>
+    
+        <!-- Password to use -->
+        <property name="hibernate.connection.password">acss</property>
+    
+        <!-- When operating in development mode, set this value to true.  For Production, set to false. -->
+        <property name="hibernate.show_sql">true</property>
+    
+        <!-- Use Threading for the session -->
+        <property name="hibernate.current_session_context_class">thread</property>
+    
+        <!-- Query Factory to be used -->
+        <property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
+    
+        <!-- Always set this value to true -->
+        <property name="hibernate.bytecode.use_reflection_optimizer">true</property>
+        <!-- 
+            End of BMT configuration 
+        -->
+
+        <!--
+            This section must contain all the POJO objects that is used for 
+            hibernate persistence.
+        -->
+        <mapping class="com.acss.training.Profile"/>
+        <mapping class="com.acss.training.Company"/>
+        <mapping class="com.acss.training.AccountSettings"/>
+        <mapping class="com.acss.training.Contact"/>
+        <mapping class="com.acss.training.Card"/>
+        <mapping class="com.acss.training.Transactions"/>
+        <mapping class="com.acss.training.PointBucket"/>
+        <mapping class="com.acss.training.TrialCustomerBean"/>
+
+        
+        <!--
+            End of POJO Listing
+        -->
+    </session-factory>
+</hibernate-configuration>
